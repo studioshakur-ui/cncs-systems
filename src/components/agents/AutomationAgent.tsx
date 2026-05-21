@@ -5,6 +5,7 @@ import { translate } from '../../i18n/config';
 import { useAgent } from './useAgent';
 import { AgentShell } from './AgentShell';
 import { AutomationResult } from './AgentResult';
+import { AgentResultActions } from './AgentResultActions';
 
 interface AutomationAgentProps {
   language: Language;
@@ -83,6 +84,7 @@ export function AutomationAgent({ language }: AutomationAgentProps) {
         </>
       }
       result={envelope ? <AutomationResult output={envelope.result} mode={envelope.mode} language={language} /> : null}
+      resultFooter={<AgentResultActions kind="automation" primaryInput={workflow} language={language} />}
     />
   );
 }

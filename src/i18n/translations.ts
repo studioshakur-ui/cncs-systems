@@ -126,6 +126,15 @@ export type TranslationKey =
   | 'process.resultBody'
   | 'final.title'
   | 'final.copy'
+  | 'contact.kicker'
+  | 'contact.action.whatsapp'
+  | 'contact.action.email'
+  | 'contact.action.scroll'
+  | 'contact.prefill.subjectPrefix'
+  | 'contact.prefill.body.offer'
+  | 'contact.prefill.body.audit'
+  | 'contact.prefill.body.automation'
+  | 'contact.prefill.footer'
   | 'footer.signature'
   | 'footer.tagline';
 
@@ -258,6 +267,15 @@ export const translations: Record<Language, Dictionary> = {
     'process.resultBody': 'Un résultat mesurable, observable et exploitable.',
     'final.title': 'Tu n’as pas besoin d’un site. Tu as besoin d’un système.',
     'final.copy': 'Décris ton contexte. SHAKUR Studio revient sous 24 h avec un plan de système ciblé, pas un devis générique.',
+    'contact.kicker': 'Construisons ton système',
+    'contact.action.whatsapp': 'Envoyer sur WhatsApp',
+    'contact.action.email': 'Envoyer par email',
+    'contact.action.scroll': 'Voir le formulaire de contact',
+    'contact.prefill.subjectPrefix': 'SHAKUR STUDIO',
+    'contact.prefill.body.offer': 'Bonjour, je viens d’utiliser l’Offer Agent sur shakurstudio.com. J’aimerais transformer cette offre en système exécutable.',
+    'contact.prefill.body.audit': 'Bonjour, je viens d’utiliser l’Audit Agent sur shakurstudio.com. J’aimerais discuter des corrections prioritaires et de leur mise en œuvre.',
+    'contact.prefill.body.automation': 'Bonjour, je viens d’utiliser l’Automation Agent sur shakurstudio.com. J’aimerais cadrer la mise en place du workflow proposé.',
+    'contact.prefill.footer': 'Envoyé depuis shakurstudio.com',
     'footer.signature': 'Construit par SHAKUR.',
     'footer.tagline': 'Pour les entreprises qui ont besoin de systèmes, pas de décoration.'
   },
@@ -387,6 +405,15 @@ export const translations: Record<Language, Dictionary> = {
     'process.resultBody': 'Un risultato misurabile, osservabile e sfruttabile.',
     'final.title': 'Non ti serve un sito. Ti serve un sistema.',
     'final.copy': 'Descrivi il contesto. SHAKUR Studio torna entro 24 h con un piano di sistema mirato, non un preventivo generico.',
+    'contact.kicker': 'Costruiamo il tuo sistema',
+    'contact.action.whatsapp': 'Invia su WhatsApp',
+    'contact.action.email': 'Invia via email',
+    'contact.action.scroll': 'Vai al modulo di contatto',
+    'contact.prefill.subjectPrefix': 'SHAKUR STUDIO',
+    'contact.prefill.body.offer': 'Ciao, ho appena usato l’Offer Agent su shakurstudio.com. Vorrei trasformare questa offerta in un sistema operativo.',
+    'contact.prefill.body.audit': 'Ciao, ho appena usato l’Audit Agent su shakurstudio.com. Vorrei discutere le correzioni prioritarie e la loro implementazione.',
+    'contact.prefill.body.automation': 'Ciao, ho appena usato l’Automation Agent su shakurstudio.com. Vorrei inquadrare l’implementazione del workflow proposto.',
+    'contact.prefill.footer': 'Inviato da shakurstudio.com',
     'footer.signature': 'Costruito da SHAKUR.',
     'footer.tagline': 'Per aziende che hanno bisogno di sistemi, non di decorazione.'
   },
@@ -516,6 +543,15 @@ export const translations: Record<Language, Dictionary> = {
     'process.resultBody': 'A measurable, observable, exploitable outcome.',
     'final.title': 'You don’t need a website. You need a system.',
     'final.copy': 'Describe your context. SHAKUR Studio comes back within 24 h with a targeted system plan, not a generic quote.',
+    'contact.kicker': 'Let’s build your system',
+    'contact.action.whatsapp': 'Send on WhatsApp',
+    'contact.action.email': 'Send by email',
+    'contact.action.scroll': 'See the contact form',
+    'contact.prefill.subjectPrefix': 'SHAKUR STUDIO',
+    'contact.prefill.body.offer': 'Hi — I just used the Offer Agent on shakurstudio.com. I’d like to turn this offer into an operational system.',
+    'contact.prefill.body.audit': 'Hi — I just used the Audit Agent on shakurstudio.com. I’d like to discuss the priority fixes and how to ship them.',
+    'contact.prefill.body.automation': 'Hi — I just used the Automation Agent on shakurstudio.com. I’d like to scope the implementation of the proposed workflow.',
+    'contact.prefill.footer': 'Sent from shakurstudio.com',
     'footer.signature': 'Built by SHAKUR.',
     'footer.tagline': 'For businesses that need systems, not decoration.'
   }

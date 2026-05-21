@@ -5,6 +5,7 @@ import { translate } from '../../i18n/config';
 import { useAgent } from './useAgent';
 import { AgentShell } from './AgentShell';
 import { AuditResult } from './AgentResult';
+import { AgentResultActions } from './AgentResultActions';
 
 interface AuditAgentProps {
   language: Language;
@@ -83,6 +84,7 @@ export function AuditAgent({ language }: AuditAgentProps) {
         </>
       }
       result={envelope ? <AuditResult output={envelope.result} mode={envelope.mode} language={language} /> : null}
+      resultFooter={<AgentResultActions kind="audit" primaryInput={subject} language={language} />}
     />
   );
 }

@@ -6,6 +6,7 @@ import { AgentTone } from '../../lib/agents/types';
 import { useAgent } from './useAgent';
 import { AgentShell } from './AgentShell';
 import { OfferResult } from './AgentResult';
+import { AgentResultActions } from './AgentResultActions';
 
 const TONES: AgentTone[] = ['premium', 'expert', 'direct', 'friendly'];
 
@@ -104,6 +105,7 @@ export function OfferAgent({ language }: OfferAgentProps) {
         </>
       }
       result={envelope ? <OfferResult output={envelope.result} mode={envelope.mode} language={language} /> : null}
+      resultFooter={<AgentResultActions kind="offer" primaryInput={activity} language={language} />}
     />
   );
 }

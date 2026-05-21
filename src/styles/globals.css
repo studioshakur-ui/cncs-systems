@@ -872,6 +872,60 @@ main { max-width: 1180px; margin: 0 auto; }
   background: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
+/* Post-result conversion actions: WhatsApp + Email + scroll-to-contact */
+.agent-result__actions {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed color-mix(in srgb, var(--accent) 26%, var(--line));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.agent-result__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-soft) 60%, transparent);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 var(--metal-highlight);
+  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.agent-result__action:hover { transform: translateY(-1px); }
+.agent-result__action--whatsapp {
+  color: #0a1a16;
+  background:
+    linear-gradient(180deg,
+      var(--accent-strong),
+      var(--accent) 55%,
+      color-mix(in srgb, var(--accent) 88%, black 12%));
+  border-color: transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.20),
+    0 10px 22px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+:root[data-theme='light'] .agent-result__action--whatsapp { color: #ffffff; }
+.agent-result__action--email {
+  border-color: color-mix(in srgb, var(--accent) 38%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.agent-result__action--scroll {
+  border-style: dashed;
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--muted);
+}
+.agent-result__action--scroll:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
 .agent-mode-badge {
   display: inline-flex;
   align-items: center;
@@ -1166,6 +1220,15 @@ main { max-width: 1180px; margin: 0 auto; }
   position: relative;
 }
 .cta-section__body { max-width: 640px; }
+.cta-section__eyebrow {
+  display: inline-flex;
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+}
 .cta-section h2 {
   font-size: clamp(1.7rem, 3.2vw, 2.4rem);
   margin: 0 0 10px;
