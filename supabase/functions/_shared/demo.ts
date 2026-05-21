@@ -24,7 +24,7 @@ export function demoOffer(language: AgentLanguage, activity: string): OfferAgent
       landingStructure: [
         'Hero : promesse + preuve sociale immédiate',
         'Problème : friction actuelle décrite en une phrase',
-        'Système CNCS : message, interface, données, automation, résultat',
+        'Système SHAKUR : message, interface, données, automation, résultat',
         'Preuves : 2-3 cas concrets ou logos',
         'CTA unique : qualification courte + créneau'
       ],
@@ -38,7 +38,7 @@ export function demoOffer(language: AgentLanguage, activity: string): OfferAgent
       landingStructure: [
         'Hero: promessa + prova sociale immediata',
         'Problema: frizione attuale descritta in una frase',
-        'Sistema CNCS: messaggio, interfaccia, dati, automazione, risultato',
+        'Sistema SHAKUR: messaggio, interfaccia, dati, automazione, risultato',
         'Prove: 2-3 casi concreti o loghi',
         'CTA unica: qualificazione breve + slot'
       ],
@@ -52,7 +52,7 @@ export function demoOffer(language: AgentLanguage, activity: string): OfferAgent
       landingStructure: [
         'Hero: promise + immediate proof',
         'Problem: current friction described in one sentence',
-        'CNCS system: message, interface, data, automation, result',
+        'SHAKUR system: message, interface, data, automation, result',
         'Proof: 2-3 concrete cases or logos',
         'Single CTA: short qualification + booking slot'
       ],
@@ -79,7 +79,7 @@ export function demoAudit(language: AgentLanguage, subject: string): AuditAgentO
         'Placer un CTA unique au-dessus de la ligne de flottaison.',
         'Ajouter trois preuves (logos, chiffres ou témoignages courts).'
       ],
-      cncsSuggestion: 'Refonte hero + parcours de qualification en une page CNCS Web System.'
+      cncsSuggestion: 'Refonte hero + parcours de qualification en une page SHAKUR Web System.'
     },
     it: {
       clarityScore: 64,
@@ -95,7 +95,7 @@ export function demoAudit(language: AgentLanguage, subject: string): AuditAgentO
         'Posizionare una CTA unica sopra la piega.',
         'Aggiungere tre prove (loghi, numeri o testimonianze brevi).'
       ],
-      cncsSuggestion: 'Rifacimento hero + percorso di qualificazione su una pagina CNCS Web System.'
+      cncsSuggestion: 'Rifacimento hero + percorso di qualificazione su una pagina SHAKUR Web System.'
     },
     en: {
       clarityScore: 64,
@@ -111,7 +111,7 @@ export function demoAudit(language: AgentLanguage, subject: string): AuditAgentO
         'Place a single CTA above the fold.',
         'Add three proofs (logos, numbers or short testimonials).'
       ],
-      cncsSuggestion: 'Hero rebuild + qualification flow on a single CNCS Web System page.'
+      cncsSuggestion: 'Hero rebuild + qualification flow on a single SHAKUR Web System page.'
     }
   } as const;
   return dict[language];

@@ -27,14 +27,14 @@
     <script>
       (function () {
         try {
-          var lang = localStorage.getItem('cncs-language');
+          var lang = localStorage.getItem('shakur-language');
           if (lang === 'fr' || lang === 'it' || lang === 'en') {
             document.documentElement.lang = lang;
           } else {
             var nav = (navigator.language || 'en').toLowerCase();
             document.documentElement.lang = nav.startsWith('it') ? 'it' : nav.startsWith('fr') ? 'fr' : 'en';
           }
-          var theme = localStorage.getItem('cncs-theme');
+          var theme = localStorage.getItem('shakur-theme');
           if (theme === 'dark' || theme === 'light') {
             document.documentElement.dataset.theme = theme;
           } else {

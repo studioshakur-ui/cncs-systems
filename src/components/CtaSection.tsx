@@ -6,7 +6,7 @@ interface CtaSectionProps {
   language: Language;
 }
 
-const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL ?? 'contact@cncs.systems';
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL ?? 'contact@shakurstudio.com';
 const WHATSAPP_URL = import.meta.env.VITE_WHATSAPP_URL;
 
 export function CtaSection({ language }: CtaSectionProps) {

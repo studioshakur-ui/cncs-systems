@@ -11,7 +11,7 @@ import { CtaSection } from './components/CtaSection';
 type Theme = 'dark' | 'light';
 
 function getStoredTheme(): Theme {
-  const stored = window.localStorage.getItem('cncs-theme');
+  const stored = window.localStorage.getItem('shakur-theme');
   if (stored === 'dark' || stored === 'light') return stored;
   return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
@@ -21,12 +21,12 @@ export default function App() {
   const [theme, setTheme] = useState<Theme>(() => getStoredTheme());
 
   useEffect(() => {
-    window.localStorage.setItem('cncs-language', language);
+    window.localStorage.setItem('shakur-language', language);
     document.documentElement.lang = language;
   }, [language]);
 
   useEffect(() => {
-    window.localStorage.setItem('cncs-theme', theme);
+    window.localStorage.setItem('shakur-theme', theme);
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 

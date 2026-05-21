@@ -3,7 +3,7 @@ import { Language, translations, TranslationKey } from './translations';
 export const languages: Language[] = ['fr', 'it', 'en'];
 
 export function getStoredLanguage(): Language {
-  const stored = window.localStorage.getItem('cncs-language');
+  const stored = window.localStorage.getItem('shakur-language');
   if (stored === 'fr' || stored === 'it' || stored === 'en') {
     return stored;
   }
