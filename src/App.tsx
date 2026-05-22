@@ -3,6 +3,7 @@ import { getStoredLanguage, translate } from './i18n/config';
 import { Language, TranslationKey } from './i18n/translations';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { ShakurFlow } from './components/ShakurFlow';
 import { AgentsSection } from './components/AgentsSection';
 import { SystemsSection } from './components/SystemsSection';
 import { CtaSection } from './components/CtaSection';
@@ -41,6 +42,7 @@ export default function App() {
       />
       <main>
         <Hero language={language} />
+        <ShakurFlow language={language} />
         <AgentsSection language={language} />
         <SystemsSection language={language} />
         <CtaSection language={language} />

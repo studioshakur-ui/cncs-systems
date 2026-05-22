@@ -1052,6 +1052,307 @@ main { max-width: 1180px; margin: 0 auto; }
 }
 
 /* ============================================================
+   The Shakur Flow — cinematic signature section
+   ============================================================ */
+
+.section--flow { padding-top: 64px; padding-bottom: 16px; }
+
+.shakur-flow {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: 26px 28px 28px;
+  background:
+    radial-gradient(120% 100% at 50% -10%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--panel-strong) 100%, transparent),
+      color-mix(in srgb, var(--panel) 78%, transparent));
+  border: 1px solid var(--line);
+  box-shadow:
+    inset 0 1px 0 var(--metal-highlight),
+    inset 0 -1px 0 var(--metal-shadow),
+    0 26px 80px var(--shadow-strong);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+/* Step indicator row */
+
+.shakur-flow__steps {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+.shakur-flow__step-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+.shakur-flow__step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  transition: color .25s ease, background .25s ease;
+}
+.shakur-flow__step:hover { color: var(--text); background: color-mix(in srgb, var(--bg-soft) 30%, transparent); }
+.shakur-flow__step.is-active {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.shakur-flow__step.is-done { color: var(--text); }
+.shakur-flow__step-ordinal {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  transition: color .25s ease;
+}
+.shakur-flow__step.is-active .shakur-flow__step-ordinal,
+.shakur-flow__step.is-done .shakur-flow__step-ordinal { color: var(--accent); }
+.shakur-flow__step-label {
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+}
+.shakur-flow__connector {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 1px;
+  background: var(--line);
+  margin: 0 6px;
+  transition: background .35s ease;
+}
+.shakur-flow__connector.is-done { background: color-mix(in srgb, var(--accent) 70%, transparent); }
+
+/* Stage = bubbles + plan + contact */
+
+.shakur-flow__stage {
+  display: grid;
+  gap: 14px;
+  padding: 6px 0 2px;
+}
+
+.shakur-flow__bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 78%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-soft) 60%, transparent);
+  box-shadow: inset 0 1px 0 var(--metal-highlight);
+  animation: bubble-in .4s ease both;
+}
+.shakur-flow__bubble p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+.shakur-flow__bubble--user {
+  justify-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.shakur-flow__bubble--agent {
+  justify-self: flex-end;
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 8%, transparent),
+      color-mix(in srgb, var(--bg-soft) 70%, transparent));
+  border-bottom-right-radius: 4px;
+}
+.shakur-flow__bubble-avatar {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--bg-soft) 70%, transparent);
+  border: 1px solid var(--line);
+  box-shadow: inset 0 1px 0 var(--metal-highlight);
+}
+.shakur-flow__bubble-avatar--accent {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 36%, transparent);
+}
+
+@keyframes bubble-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Typing indicator */
+
+.shakur-flow__typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding-top: 6px;
+}
+.shakur-flow__typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 65%, transparent);
+  opacity: 0.4;
+  animation: typing-pulse 1.2s ease-in-out infinite;
+}
+.shakur-flow__typing-dot:nth-child(2) { animation-delay: .15s; }
+.shakur-flow__typing-dot:nth-child(3) { animation-delay: .3s; }
+@keyframes typing-pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-2px); }
+}
+
+/* Generated mini-plan */
+
+.shakur-flow__plan {
+  margin-top: 4px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 6%, transparent),
+      color-mix(in srgb, var(--bg-soft) 80%, transparent));
+  box-shadow: inset 0 1px 0 var(--metal-highlight);
+  animation: bubble-in .45s ease both;
+}
+.shakur-flow__plan-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.shakur-flow__plan-eyebrow {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.shakur-flow__plan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.shakur-flow__plan-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+.shakur-flow__plan-list li svg { color: var(--accent); flex: 0 0 auto; }
+
+/* Contact action row */
+
+.shakur-flow__contact {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  display: grid;
+  gap: 14px;
+  animation: bubble-in .45s ease both;
+}
+.shakur-flow__contact-copy h3 {
+  margin: 0 0 4px;
+  font-size: 1.04rem;
+  color: var(--text);
+}
+.shakur-flow__contact-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.shakur-flow__contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.shakur-flow__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-soft) 60%, transparent);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 var(--metal-highlight);
+  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.shakur-flow__action:hover { transform: translateY(-1px); }
+.shakur-flow__action--whatsapp {
+  color: #0a1a16;
+  background:
+    linear-gradient(180deg,
+      var(--accent-strong),
+      var(--accent) 55%,
+      color-mix(in srgb, var(--accent) 88%, black 12%));
+  border-color: transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.20),
+    0 10px 22px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+:root[data-theme='light'] .shakur-flow__action--whatsapp { color: #ffffff; }
+.shakur-flow__action--email {
+  border-color: color-mix(in srgb, var(--accent) 38%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.shakur-flow__action--scroll {
+  border-style: dashed;
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--muted);
+}
+.shakur-flow__action--scroll:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+@media (max-width: 720px) {
+  .shakur-flow { padding: 18px 16px 22px; }
+  .shakur-flow__steps { flex-wrap: wrap; gap: 6px; }
+  .shakur-flow__step-wrap { flex-basis: 48%; min-width: 0; }
+  .shakur-flow__connector { display: none; }
+  .shakur-flow__bubble { max-width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shakur-flow__bubble,
+  .shakur-flow__plan,
+  .shakur-flow__contact { animation: none !important; }
+  .shakur-flow__typing-dot { animation: none !important; opacity: 0.6 !important; }
+}
+
+/* ============================================================
    Capabilities / systems
    ============================================================ */
 
