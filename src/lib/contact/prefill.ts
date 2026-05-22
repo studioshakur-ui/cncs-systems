@@ -9,18 +9,14 @@
  *   - offer       → activity / service
  *   - audit       → URL or description
  *   - automation  → current manual workflow
- *
- * If no env vars are set, callers can detect a `null` URL and hide the
- * corresponding action. Email always falls back to a sensible default.
  */
 
 import { AgentKind } from '../agents/types';
 import { Language, TranslationKey } from '../../i18n/translations';
 import { translate } from '../../i18n/config';
+import { site } from '../../config/site';
 
 const PRIMARY_INPUT_TRUNCATE = 220;
-const CONTACT_EMAIL = (import.meta.env.VITE_CONTACT_EMAIL as string | undefined) ?? 'contact@shakurstudio.com';
-const WHATSAPP_BASE = (import.meta.env.VITE_WHATSAPP_URL as string | undefined) ?? '';
 
 function clamp(input: string): string {
   const trimmed = input.trim();
@@ -37,9 +33,8 @@ function bodyKeyFor(kind: AgentKind): TranslationKey {
 }
 
 function subjectFor(language: Language, kind: AgentKind): string {
-  const verb = translate(language, bodyKeyFor(kind));
-  // Subject is shorter than body: take the first line only.
-  const firstLine = verb.split('\n')[0]!;
+  const body = translate(language, bodyKeyFor(kind));
+  const firstLine = body.split('\n')[0]!;
   return `${translate(language, 'contact.prefill.subjectPrefix')} — ${firstLine}`;
 }
 
@@ -65,7 +60,7 @@ export function buildPrefillTargets(
   const body = bodyFor(language, kind, primaryInput);
 
   const mailtoHref =
-    `mailto:${CONTACT_EMAIL}` +
+    `mailto:${site.contactEmail}` +
     `?subject=${encodeURIComponent(subject)}` +
     `&body=${encodeURIComponent(body)}`;
 
@@ -74,12 +69,9 @@ export function buildPrefillTargets(
   return { whatsappHref, mailtoHref };
 }
 
-/**
- * Append a pre-filled `text` query param to the configured wa.me URL.
- * Returns null if no WhatsApp URL is configured at build time.
- */
 function buildWhatsAppHref(message: string): string | null {
-  if (!WHATSAPP_BASE) return null;
-  const separator = WHATSAPP_BASE.includes('?') ? '&' : '?';
-  return `${WHATSAPP_BASE}${separator}text=${encodeURIComponent(message)}`;
+  const base = site.whatsappPrefillBase;
+  if (!base) return null;
+  const separator = base.includes('?') ? '&' : '?';
+  return `${base}${separator}text=${encodeURIComponent(message)}`;
 }

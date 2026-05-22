@@ -1,13 +1,11 @@
 import { ArrowRight, BrainCircuit, Globe2, Mail, MessageCircle, Workflow } from 'lucide-react';
 import { Language, TranslationKey } from '../i18n/translations';
 import { translate } from '../i18n/config';
+import { site } from '../config/site';
 
 interface CapabilitiesContactProps {
   language: Language;
 }
-
-const CONTACT_EMAIL = (import.meta.env.VITE_CONTACT_EMAIL as string | undefined) ?? 'contact@shakurstudio.com';
-const WHATSAPP_URL = import.meta.env.VITE_WHATSAPP_URL as string | undefined;
 
 interface Capability {
   icon: typeof Globe2;
@@ -49,15 +47,15 @@ export function CapabilitiesContact({ language }: CapabilitiesContactProps) {
         <h2>{t('contact.title')}</h2>
         <p>{t('contact.copy')}</p>
         <div className="caps-contact__actions">
-          <a className="button button--primary" href={`mailto:${CONTACT_EMAIL}`}>
+          <a className="button button--primary" href={`mailto:${site.contactEmail}`}>
             {t('cta.startProject')} <ArrowRight size={16} aria-hidden="true" />
           </a>
-          {WHATSAPP_URL && (
-            <a className="button button--secondary" href={WHATSAPP_URL} target="_blank" rel="noreferrer noopener">
+          {site.whatsappUrl && (
+            <a className="button button--ghost" href={site.whatsappUrl} target="_blank" rel="noreferrer noopener">
               <MessageCircle size={16} aria-hidden="true" /> {t('contact.action.whatsapp')}
             </a>
           )}
-          <a className="button button--ghost" href={`mailto:${CONTACT_EMAIL}`}>
+          <a className="button button--ghost" href={`mailto:${site.contactEmail}`}>
             <Mail size={16} aria-hidden="true" /> {t('contact.action.email')}
           </a>
         </div>
